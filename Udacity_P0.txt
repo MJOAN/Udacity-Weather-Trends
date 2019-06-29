@@ -3,16 +3,13 @@ Title: "Exploring Weather Trends"
 Name: Mariam Joan
 Date: June 28, 2019
 
-
+#####################################################################
 I. Outline: 
     1. What tools did you use for each step? (Python, SQL, Excel, etc)
 
         The .csv files were retrieved from the SQL user interface Udacity provides when querying all rows for the `global_data` table while joining `city_list` where `city` = `Los Angeles` to the `city_data` table to retrieve only this city's average temperatues. 
         
-        Starting with a Python 3 Jupyter Notebook I imported pandas, matplotlib and IPuthon display features. Using the Pandas `read_csv` method I saved each `csv` file to a Pandas DataFrame variable name specific to the data. From there I had to drop the last 2 rows and first 99 rows from `global_data` because the length rows differed from `city_data`. Using the Pandas `shape` method quickly displays number of rows, and number of columns.
-
-        From there I created separate DataFrames for the `city_year`, `city_temp`, `global_year`, and `global_temp` so there was data to plot against using an x and y axis. 
-
+        Starting with a Python 3 Jupyter Notebook I imported pandas, matplotlib and IPuthon display features. Using the Pandas `read_csv` method I saved each `csv` file to a Pandas DataFrame variable name specific to the data. From there I had to drop the last 2 rows and first 99 rows from `global_data` because the length rows differed from `city_data`. Using the Pandas `shape` method quickly displays number of rows, and number of columns. From there I created separate DataFrames for the `city_year`, `city_temp`, `global_year`, and `global_temp` so there was data to plot for the x and y axis. 
 
     2. How did you calculate the moving average?
 
@@ -20,13 +17,20 @@ I. Outline:
 
     3. What were your key considerations when deciding how to visualize the trends?
 
-        The key considerations for visualizing trends was thinking about how many `moving averages` did I need to display. In this case, it was two, the global and city data. The Python library `matplotlib` has a line chart option which provides exactly what we need here to show the average changing temperatures.
+        When searching for `trends` in matplotlib I found a Stack Overflow post that showed how to create a function to calculate the slope of a given set of values. In this case, I called the function twice to create two slopes, one for local and one for global. Each displayed a decimal value. When understanding trend lines, I learned that if the result was `0` then the trend is constant while anything below 0 was decreasing and above 0 was increasing. In both cases the trend is increasing. 
 
 
+#####################################################################
 II. At least four observations about the similarities and/or differences in the trends:
 
-    1. Is your city hotter or cooler on average compared to the global average? 
-    Has the difference been consistent over time?
-    2. How do the changes in your city’s temperatures over time compare to the changes in the global average?
+    1. Is your city hotter or cooler on average compared to the global average? Has the difference been consistent over time?
+        - Los Angeles temperatures were hotter on average compared to global average and this has been consistent over the entire dataset.
+
+    2. How do the changes in your city’s temperatures over time compare to the changes in the global average? 
+        - The `mean()` of both Pandas Series for local and global temperatures was `8` so the difference in Celsius temperature averaged about an `8` degree difference between them. While the variance taken on the average temperatures within each dataset varied `32%` for local data and `34%` for global data. So changes within each dataset was very similar and mean shows less than 10 degree difference between average temperatures.
+    
     3. What does the overall trend look like? Is the world getting hotter or cooler? 
+        - Looking at the results from deriving a slope of both datasets, city trend was `0.005113830043010149` while global trend was `0.004733619080561259` which shows Los Angeles, CA is trending a bit higher than global temperatures. 
+    
     4. Has the trend been consistent over the last few hundred years?
+        - This has been consistent over the few hundred years from viewing the steadily increasing line in the line chart. 
