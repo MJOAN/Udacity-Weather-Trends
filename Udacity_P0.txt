@@ -1,0 +1,32 @@
+UDACITY PROJECT 0 
+Title: "Exploring Weather Trends"
+Name: Mariam Joan
+Date: June 28, 2019
+
+
+I. Outline: 
+    1. What tools did you use for each step? (Python, SQL, Excel, etc)
+
+        The .csv files were retrieved from the SQL user interface Udacity provides when querying all rows for the `global_data` table while joining `city_list` where `city` = `Los Angeles` to the `city_data` table to retrieve only this city's average temperatues. 
+        
+        Starting with a Python 3 Jupyter Notebook I imported pandas, matplotlib and IPuthon display features. Using the Pandas `read_csv` method I saved each `csv` file to a Pandas DataFrame variable name specific to the data. From there I had to drop the last 2 rows and first 99 rows from `global_data` because the length rows differed from `city_data`. Using the Pandas `shape` method quickly displays number of rows, and number of columns.
+
+        From there I created separate DataFrames for the `city_year`, `city_temp`, `global_year`, and `global_temp` so there was data to plot against using an x and y axis. 
+
+
+    2. How did you calculate the moving average?
+
+        Using `matplotlib` for the chart visual I chose to use their formular for `moving average` which was: `.rolling(window=30).mean()` where `window` equals the `moving average` number of days. 
+
+    3. What were your key considerations when deciding how to visualize the trends?
+
+        The key considerations for visualizing trends was thinking about how many `moving averages` did I need to display. In this case, it was two, the global and city data. The Python library `matplotlib` has a line chart option which provides exactly what we need here to show the average changing temperatures.
+
+
+II. At least four observations about the similarities and/or differences in the trends:
+
+    1. Is your city hotter or cooler on average compared to the global average? 
+    Has the difference been consistent over time?
+    2. How do the changes in your city’s temperatures over time compare to the changes in the global average?
+    3. What does the overall trend look like? Is the world getting hotter or cooler? 
+    4. Has the trend been consistent over the last few hundred years?
